@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Día de la Novia 💕</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #d1006c;
+      font-size: 2.8em;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #d1006c;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #a80056;
+    }
+
+    .image-container {
+      margin-top: 40px;
+      min-height: 250px;
+    }
+
+    .image-container img {
+      width: 280px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .image-container img.visible {
+      opacity: 1;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+        .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: rgb(255, 0, 0);
+      transform: rotate(45deg);
+      animation: float 6s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -10%;
+        left: 50%;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        left: calc(50% + 30px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Feliz Día de la Novia 💖</h1>
+  <p>Gordita hermosa de mi vida, sé que estamos muy lejos pero eso nova hacer que deje de amarte
+    , quizá no sea mucho pero este detalle es muy significativo de mí para ti
+    , gracias por hacer mi vida tan especial y pronto estaremos juntos 
+    para poder seguir haciendo de las nuestras, TE AMO 💖💑</p>
+
+  <button onclick="mostrarSiguiente()">Mostrar foto siguiente 📷</button>
+
+  <div class="image-container">
+    <img id="foto" src="" alt="Foto juntos">
+  </div>
+
+  <div class="controls">
+    <audio controls autoplay loop>
+      <source src="Musiquita.mp3" type="audio/mp3">
+      Tu navegador no soporta audio HTML5.
+    </audio>
+  </div>
+
+  <script>
+    const fotos = [
+      'Primera imagen.jpg',
+      'Segunda imagen.jpg',
+      'Tercera imagen.jpg',
+      'Cuarta imagen.jpg' ,
+      'Quinta imagen.jpg' ,
+      'Sexta imagen.jpg' ,
+      // Agrega más si quieres
+    ];
+
+    let indice = 0;
+    const img = document.getElementById('foto');
+
+    function mostrarSiguiente() {
+      if (indice < fotos.length) {
+        img.classList.remove('visible');
+        setTimeout(() => {
+          img.src = fotos[indice];
+          img.classList.add('visible');
+          indice++;
+        }, 500);
+      } else {
+        alert("¡Ya viste todas nuestras fotos! 💕");
+      }
+    }
+  </script>
+  <script>
+    function crearCorazones() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(crearCorazones, 500);
+
+    function mostrarSorpresa() {
+      alert("¡Te amo muchísimo! 💕 Nunca lo olvides. 🌟");
+    }
+  </script>
+
+</body>
+</html>
